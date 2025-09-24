@@ -10,9 +10,8 @@ It also sets up a **Terraform remote backend on S3** with **versioning + S3 Obje
 - 1× EC2 instance (Amazon Linux 2023) with NGINX installed via `user_data`
 - Terraform **remote state** on S3 with:
   - **Versioning** + **S3 Object Lock** (default retention 1 day in **GOVERNANCE** mode)
-  - **DynamoDB table** for Terraform **state locking** (prevents concurrent applies)
 
-> ⚠️ Note on “native S3 locking”: Terraform’s S3 backend uses **DynamoDB** for state locking.  
+
 > S3 **Object Lock** protects objects from deletion/overwrite for a retention window, but is **not** used by Terraform for concurrency locks. This project configures **both** for safety.
 
 ---
@@ -30,7 +29,7 @@ It also sets up a **Terraform remote backend on S3** with **versioning + S3 Obje
 ### 0) Clone/extract this folder
 ```
 terraform-nginx-ec2/
-└── Terraform-files/                    # The NGINX-on-EC2 demo infrastructure
+└── Terraform-files/                 
 ```
 
 ### 1) Backend Configurartion
